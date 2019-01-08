@@ -126,9 +126,15 @@
             },
 
             _renderYears: function() {
-                var markup = $.map(options.years, function(year) {
-                    if (now == year) {
-                        return '<option selected>' + year + '</option>';
+                var markup = $.map(options.years, function (year) {
+                    if (options.selectYears) {
+                        if (options.selectYears == year) {
+                            return '<option selected>' + options.selectYears + '</option>';
+                        }
+                    } else {
+                        if (now == year) {
+                            return '<option selected>' + year + '</option>';
+                        }
                     }
                     return '<option>' + year + '</option>';
                 });

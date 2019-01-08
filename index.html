@@ -25,7 +25,13 @@
             if ($('.monthpicker')) {
                 $(".monthpicker").remove();
             }
+            var y ,_dates= $('#monthly').val();
+            if (_dates) {
+                var _time = _dates.split('-');
+                y = _time[0];
+            }
             $('#monthly').monthpicker({
+                selectYears: y ? y : '',
                 onMonthSelect: function(m, y) {
                     console.log('Month: ' + m + ', year: ' + y);
                 }
@@ -36,7 +42,13 @@
             if ($('.monthpicker')) {
                 $(".monthpicker").remove();
             }
+            var y ,_dates= $('#month2').val();
+            if (_dates) {
+                var _time = _dates.split('-');
+                y = _time[0];
+            }
             $('#month2').monthpicker({
+                selectYears: y ? y : '',
                 onMonthSelect: function(m, y) {
                     console.log('Month: ' + m + ', year: ' + y);
                 }
