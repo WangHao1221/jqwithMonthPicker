@@ -107,13 +107,18 @@
             },
 
             _render: function() {
-                var linkPosition = this._el.position(),
+                var boxOffset = this._el.offset(),
                     cssOptions = {
                         display: 'none',
                         position: 'absolute',
-                        top: linkPosition.top + this._el.height() + (options.topOffset || 0),
-                        left: linkPosition.left
+                        top: boxOffset.top + this._el.height() + 15,
+                        left: boxOffset.left
                     };
+                var _dowHeight = $(document).height() - (cssOptions.top);
+                if (_dowHeight < 165) { // 165为月份插件的高度
+                    cssOptions.top = boxOffset.top - 170;
+                }
+
                 this._id = (new Date).valueOf();
                 this._container = $('<div class="monthpicker" id="monthpicker-' + this._id + '">')
                     .css(cssOptions)

@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>jq月份插件</title>
-	<link rel="stylesheet" href="./monthpicker.css">
-	<script src="./jquery.min.js"></script>
-	<script src="./monthpicker.js"></script>
+    <meta charset="UTF-8">
+    <title>jq月份插件</title>
+    <link rel="stylesheet" href="./monthpicker.css">
+    <style>
+        .input-2{
+			margin-top:550px;
+		}
+	</style>
+    <script src="./jquery.min.js"></script>
+    <script src="./monthpicker.js"></script>
 </head>
+
 <body>
-	<input type="text" class="input" id="monthly">
-
-<script type="text/javascript">
-$(function(){
-	$('#monthly').monthpicker({
-        topOffset: 6,
-        onMonthSelect: function(m, y) {
-          console.log('Month: ' + m + ', year: ' + y);
+    <input type="text" class="input" id="monthly" onfocus="focus1()"> <br>
+    <input type="text" class="input input-2" id="month2" onfocus="focus2()">
+    <script type="text/javascript">
+    /* *说明：
+    * 给input聚焦事件，先清空monthpicker里面的内容。是为了防止多次点击出现多个弹框，同时也解决了每个弹框默认选中的问题
+    */
+    function focus1() {
+            if ($('.monthpicker')) {
+                $(".monthpicker").remove();
+            }
+            $('#monthly').monthpicker({
+                onMonthSelect: function(m, y) {
+                    console.log('Month: ' + m + ', year: ' + y);
+                }
+            })
         }
-	})
-});
-</script>
 
+        function focus2() {
+            if ($('.monthpicker')) {
+                $(".monthpicker").remove();
+            }
+            $('#month2').monthpicker({
+                onMonthSelect: function(m, y) {
+                    console.log('Month: ' + m + ', year: ' + y);
+                }
+            })
+        }
+    </script>
 </body>
+
 </html>
